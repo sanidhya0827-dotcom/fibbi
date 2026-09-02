@@ -1,14 +1,16 @@
+const img = (f) => `/products/${f}`;
+
 export const CATALOG = {
-  'crunch-berry-200':  { name: 'crunch berry · 200g',      price: 249, mrp: 299, sw: '#F5C4D8' },
-  'crunch-coffee-200': { name: 'crunch coffee · 200g',     price: 269, mrp: 319, sw: '#E3D0B5' },
-  'crunch-choco-200':  { name: 'crunch choco · 200g',      price: 269, mrp: 319, sw: '#CDBBAC' },
-  'crunch-trial-60':   { name: 'crunch trial pack · 90g', price: 99,  mrp: null, sw: '#EDF3D4' },
-  'og-jar-200':      { name: 'og jar · 200g',          price: 399, mrp: 449, sw: '#EAD9B4' },
-  'og-refill-450':   { name: 'og refill · 450g',       price: 749, mrp: 849, sw: '#F3E7CE' },
-  'og-sticks-30':    { name: 'og sticks · 30×6g',      price: 549, mrp: 599, sw: '#F3E7CE' },
-  'cup-berry':       { name: 'berry dahi cup',         price: 99,  mrp: 119, sw: '#F5C4D8' },
-  'cup-coffee':      { name: 'cold coffee cup',        price: 99,  mrp: 119, sw: '#E3D0B5' },
-  'cup-choco':       { name: 'choco oat cup',          price: 109, mrp: 129, sw: '#CDBBAC' },
+  'crunch-berry-200':   { name: 'crunch berry · 200g',   price: 249, mrp: 299, sw: '#F5C4D8', img: img('fibbi-crunch-berry.png') },
+  'crunch-coffee-200':  { name: 'crunch coffee · 200g',  price: 269, mrp: 319, sw: '#E3D0B5', img: img('fibbi-crunch-coffee.png') },
+  'crunch-cocoa-200':   { name: 'crunch cocoa · 200g',   price: 269, mrp: 319, sw: '#CDBBAC', img: img('fibbi-crunch-cocoa.png') },
+  'crunch-vanilla-200': { name: 'crunch vanilla · 200g', price: 269, mrp: 319, sw: '#EDE3C8', img: img('fibbi-crunch-vanilla.png') },
+  'og-jar-200':      { name: 'og jar · 200g',     price: 399, mrp: 449, sw: '#EAD9B4', img: img('fibbi-og-jar.png') },
+  'og-sticks-30':    { name: 'og sticks · 30×6g', price: 549, mrp: 599, sw: '#F3E7CE', img: img('fibbi-og-stick.png') },
+  'cup-berry':       { name: 'berry dahi cup',   price: 99,  mrp: 119, sw: '#F5C4D8', img: img('fibbi-cup-berry.png') },
+  'cup-coffee':      { name: 'cold coffee cup',  price: 99,  mrp: 119, sw: '#E3D0B5', img: img('fibbi-cup-coffee.png') },
+  'cup-cocoa':       { name: 'cocoa oat cup',    price: 109, mrp: 129, sw: '#CDBBAC', img: img('fibbi-cup-cocoa.png') },
+  'cup-vanilla':     { name: 'vanilla dahi cup', price: 99,  mrp: 119, sw: '#EDE3C8', img: img('fibbi-cup-vanilla.png') },
 };
 
 export const FREE_SHIP = 499;

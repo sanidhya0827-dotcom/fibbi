@@ -41,20 +41,24 @@ export default function CartDrawer() {
               {count === 0 ? (
                 <p className="cd-empty">nothing here yet — your gut is waiting <Icon name="eyes" /></p>
               ) : (
-                items.map((i) => (
-                  <div className="ci" key={i.id}>
-                    <span className="ci-swatch" style={{ background: CATALOG[i.id].sw }} />
-                    <div className="ci-info">
-                      <div className="ci-name">{CATALOG[i.id].name}</div>
-                      <div className="ci-price">₹{CATALOG[i.id].price} each</div>
+                items.map((i) => {
+                  const p = CATALOG[i.id];
+                  if (!p) return null; // stale cart entry from a removed SKU
+                  return (
+                    <div className="ci" key={i.id}>
+                      <span className="ci-swatch" style={{ background: p.sw }} />
+                      <div className="ci-info">
+                        <div className="ci-name">{p.name}</div>
+                        <div className="ci-price">₹{p.price} each</div>
+                      </div>
+                      <div className="qty">
+                        <button onClick={() => dec(i.id)}>−</button>
+                        <span>{i.qty}</span>
+                        <button onClick={() => inc(i.id)}>+</button>
+                      </div>
                     </div>
-                    <div className="qty">
-                      <button onClick={() => dec(i.id)}>−</button>
-                      <span>{i.qty}</span>
-                      <button onClick={() => inc(i.id)}>+</button>
-                    </div>
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
             {count > 0 && (

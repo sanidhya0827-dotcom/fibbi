@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import Icon from './Icon';
 
 // Drag is a desktop delight; on touch it traps page scroll, so gate it to fine pointers.
 const canDrag = typeof window !== 'undefined' && window.matchMedia('(pointer:fine)').matches;
@@ -7,11 +6,11 @@ const canDrag = typeof window !== 'undefined' && window.matchMedia('(pointer:fin
 // Rotation lives here (not CSS) so motion's drag transforms compose with the tilt.
 const shots = [
   {
-    cls: 'ph-main', rotate: -2, tape: 'tape', caption: 'crunch original · 200g',
-    label: 'HERO SHOT', desc: 'hand tipping the crunch pouch over a dahi bowl · warm morning window light · lime-green nails or sleeve for brand colour',
+    cls: 'ph-main', rotate: -2, tape: 'tape', caption: 'crunch berry · 200g',
+    img: '/products/fibbi-crunch-berry.png', alt: 'fibbi crunch berry pouch',
   },
-  { cls: 'ph-a', rotate: 4, tape: 'tape pink', label: 'MACRO', desc: 'clusters on a spoon, mid-air crumbs' },
-  { cls: 'ph-b', rotate: -5, tape: 'tape lav', label: 'LIFESTYLE', desc: 'pouch in hand, pune street backdrop' },
+  { cls: 'ph-a', rotate: 4, tape: 'tape pink', img: '/products/fibbi-crunch-cocoa.png', alt: 'fibbi crunch cocoa pouch' },
+  { cls: 'ph-b', rotate: -5, tape: 'tape lav', img: '/products/fibbi-cup-berry.png', alt: 'fibbi berry dahi cup' },
 ];
 
 export default function PhotoStack() {
@@ -33,12 +32,7 @@ export default function PhotoStack() {
         >
           <span className={s.tape} aria-hidden="true"></span>
           <div className="ph-box">
-            <Icon name="camera" size={30} />
-            <span>
-              {s.label}
-              <br />
-              {s.desc}
-            </span>
+            <img src={s.img} alt={s.alt} loading="lazy" />
           </div>
           {s.caption && <figcaption className="mono">{s.caption}</figcaption>}
         </motion.figure>

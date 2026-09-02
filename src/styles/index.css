@@ -322,6 +322,7 @@
   }
   .sku-visual{height:168px;border-bottom:1.5px solid var(--ink);position:relative;overflow:hidden;border-radius:var(--r) var(--r) 0 0}
   .sku-visual svg{position:absolute;inset:0;width:100%;height:100%}
+  .sku-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .sku-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
   .sku h4{font-size:19px}
   .sku .s-desc{font-size:14px;color:var(--ink-60);font-weight:500;flex:1}
@@ -565,8 +566,9 @@
   .ph .ph-box{
     border:2px dashed var(--ink-12);background:var(--cream);
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-    text-align:center;font-size:22px;padding:14px;
+    text-align:center;font-size:22px;padding:14px;overflow:hidden;
   }
+  .ph .ph-box img{width:100%;height:100%;object-fit:contain;display:block}
   .ph .ph-box span{font-family:'Space Mono';font-size:10px;letter-spacing:.06em;line-height:1.6;color:var(--ink-60);text-transform:uppercase}
   .ph figcaption{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);margin-top:8px;text-align:center}
   .ph .tape{top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg)}
