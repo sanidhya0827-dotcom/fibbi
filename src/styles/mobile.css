@@ -1,0 +1,132 @@
+/* ================= FIBBI · MOBILE BUILD =================
+   Phone-only layer loaded after index.css. Turns the stacked desktop
+   columns into swipeable card decks so the page reads like an app,
+   not a document. Everything here lives inside the media query.
+   ponytail: restyles the existing markup — no separate component tree. */
+
+@media (max-width: 860px) {
+
+  /* ---------- canvas + rhythm ---------- */
+  body::before{background-size:38px 38px;opacity:.16}
+  section{padding:36px 18px}
+  .wrap{max-width:100%}
+  .sec-title{font-size:clamp(26px,7.4vw,34px);line-height:1.1;margin-bottom:12px}
+  .lead{font-size:15px;line-height:1.6;max-width:none}
+  .kicker{font-size:10.5px;padding:6px 12px;margin-bottom:14px}
+
+  /* ---------- hero: product shot first, like a storefront card ---------- */
+  .hero{padding:20px 18px 34px;gap:22px}
+  .hero .photo-stack{order:-1;height:320px;width:min(320px,92vw)}
+  .hero .ph-main{width:224px}
+  .hero .ph-main .ph-box{height:244px}
+  .hero .ph-a{width:130px;right:0;bottom:32px}
+  .hero .ph-a .ph-box{height:114px}
+  .hero .ph-b{width:138px;left:2px;bottom:-6px}
+  .hero .ph-b .ph-box{height:108px}
+  .hero h1{font-size:clamp(31px,9.2vw,42px);margin-bottom:12px}
+  .hero .lead{margin-bottom:10px}
+  .stock-line{margin-bottom:18px}
+  .cta-row{gap:10px}
+  .cta-row .btn{flex:1 1 100%}
+
+  .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:24px}
+  .hm{
+    border:1.5px solid var(--ink);border-radius:12px;background:var(--white);
+    padding:12px 8px;transform:none;text-align:center;box-shadow:2px 2px 0 var(--ink);
+  }
+  .hm .n{font-size:21px}
+  .hm .l{font-size:9.5px;letter-spacing:.05em;line-height:1.35;margin-top:5px}
+
+  /* ---------- swipe decks: every card grid scrolls sideways ---------- */
+  .lines,
+  .proof-grid,
+  .sku-grid,
+  .quotes,
+  .sci-grid > div:first-child{
+    display:grid;grid-template-columns:none;
+    grid-auto-flow:column;grid-auto-columns:min(80%,300px);
+    gap:14px;margin:18px -18px 0;padding:16px 18px 20px;
+    overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;scroll-padding-left:18px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .lines::-webkit-scrollbar,
+  .proof-grid::-webkit-scrollbar,
+  .sku-grid::-webkit-scrollbar,
+  .quotes::-webkit-scrollbar,
+  .sci-grid > div:first-child::-webkit-scrollbar{display:none}
+
+  .lines > *,
+  .proof-grid > *,
+  .sku-grid > *,
+  .quotes > *,
+  .sci-grid > div:first-child > *{scroll-snap-align:start;--rr:0deg}
+
+  .line-card,.sku,.quote,.policy-card,.sci-card{transform:none;box-shadow:3px 3px 0 var(--ink)}
+  .line-card{padding:22px 20px}
+  .line-card h3{font-size:21px}
+  .line-card p{font-size:14px;margin-bottom:12px}
+  .line-card .lc-tag{margin-bottom:12px}
+
+  .proof{background:rgba(250,246,237,.06);padding:20px 18px;box-shadow:none}
+  .proof .p-h{font-size:17px}
+  .proof p{font-size:13.5px}
+
+  /* ---------- science ---------- */
+  .sci-grid{display:block;margin-top:20px}
+  .sci-card{padding:22px 20px}
+  .sci-card + .sci-card{margin-top:0}
+  .sci-card h4{font-size:18px}
+  .sci-card p{font-size:14px}
+  .nutri{margin:22px auto 0;max-width:100%;transform:none}
+
+  /* ---------- shop ---------- */
+  .shop-line{margin-top:34px}
+  .line-head{display:block;padding-bottom:10px;margin-bottom:0}
+  .line-head h3{font-size:20px}
+  .line-head .lh-note{display:block;margin-top:6px;font-size:10.5px;line-height:1.5}
+  .sku-visual{aspect-ratio:1/1}
+  .sku-body{padding:16px 16px 18px;gap:6px}
+  .sku h4{font-size:17px}
+  .sku .s-desc{font-size:13.5px}
+  .s-buy{flex-wrap:nowrap;align-items:center}
+  .og-note{margin-top:18px;padding:16px 18px;font-size:13.5px}
+
+  /* ---------- trust strip: one swipe row instead of a 2×2 block ---------- */
+  .trust-strip{
+    display:flex;overflow-x:auto;scrollbar-width:none;
+    scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+  }
+  .trust-strip::-webkit-scrollbar{display:none}
+  .ts{flex:0 0 auto;scroll-snap-align:start;padding:13px 18px;white-space:nowrap;font-size:12.5px}
+  .ts + .ts{border-left:1.5px solid var(--ink-12);border-top:none}
+
+  /* ---------- quiz + waitlist ---------- */
+  .quiz-card{margin-top:24px;transform:none}
+  .q-block .q{font-size:15px}
+  .waitlist .lead{margin-bottom:20px}
+  .wl-form{flex-direction:column;align-items:stretch}
+  .wl-form input{min-width:0;width:100%;font-size:16px}
+  .wl-form .btn{width:100%;text-align:center}
+
+  /* ---------- story: paragraphs become tiles, not prose ---------- */
+  .story-block{margin-top:4px}
+  .story-block p{
+    font-size:14.5px;background:var(--white);border:1.5px solid var(--ink);
+    border-radius:14px;padding:16px 18px;margin-bottom:12px;box-shadow:3px 3px 0 var(--ink);
+  }
+  .timeline{margin-top:28px;padding-left:20px}
+  .tl::before{left:-27px}
+  .tl h4{font-size:17px}
+  .tl p{font-size:13.5px}
+
+  /* ---------- policies: stays vertical, dense text reads badly sideways ---------- */
+  .policy-grid{gap:14px;margin-top:22px}
+  .policy-card{padding:22px 20px;--rr:0deg}
+  .policy-card h4{font-size:17px}
+  .policy-card p,.policy-card li{font-size:13.5px}
+
+  /* ---------- footer ---------- */
+  .foot-inner{grid-template-columns:1fr 1fr;gap:22px 16px}
+  .foot-inner > div:first-child{grid-column:1 / -1}
+}
