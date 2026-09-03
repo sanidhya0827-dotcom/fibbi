@@ -10,6 +10,8 @@ import Marquee from '../components/Marquee';
 import TrustStrip from '../components/TrustStrip';
 import Quiz from '../components/Quiz';
 import Testimonials from '../components/Testimonials';
+import { Sku } from './Shop';
+import { POSTS } from './Journal';
 
 const METRO_PREFIX = ['11', '12', '20', '40', '41', '56', '60', '50', '70', '38', '30'];
 
@@ -94,22 +96,19 @@ export default function Home() {
     <div className="page active" ref={ref}>
       <div className="hero">
         <CursorTrail />
-        <span className="hero-sticker"><Icon name="box" size="1em" /> batch 001 · 500 pouches</span>
         <div>
-          <span className="kicker lime">the hero drop <Icon name="sparkle" size="1em" /></span>
           <h1>
-            fibbi crunch. Fiber that <span className="u">snacks back.</span>
+            Fiber that <span className="u">snacks back.</span>
           </h1>
           <p className="lead">
-            Oat-psyllium clusters with 5g of real fiber per handful — baked so they stay crunchy in dahi, milk, or straight from the
-            pouch. Zero added sugar. Zero slime. Zero lectures.
+            Real-dose psyllium in three formats — baked crunch clusters, a stir-in husk blend, and ready-to-eat dahi cups. 5g of
+            real fiber a serve. Zero added sugar. Zero slime. Zero lectures.
           </p>
           <div className="rating-line">
-            <span className="stars">★★★★★</span> 4.6 <span className="rl-n">· 318 tester ratings · batch 001</span>
+            <span className="stars">★★★★★</span> 4.6 <span className="rl-n">· 318 tester ratings</span>
           </div>
-          <p className="stock-line"><Icon name="bolt" size="1em" /> batch 001 is limited to 500 pouches — moving fast</p>
-          <div className="cta-row">
-            <AddButton id="crunch-berry-200" className="btn btn-primary">add to cart · ₹249</AddButton>
+          <p className="stock-line"><Icon name="bolt" size="1em" /> batch 001 is limited to 500 pouches — moving fast</p>          <div className="cta-row">
+            <Link className="btn btn-primary" to="/shop">shop the range · from ₹99</Link>
             <Link className="btn" to="/science">read the science</Link>
           </div>
           <div className="hero-meta">
@@ -126,6 +125,32 @@ export default function Home() {
       <div className="pin-band">
         <PinCheck />
       </div>
+
+      <section className="home-shop">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <div>
+              <span className="kicker lime">shop <Icon name="cart" size="1em" /></span>
+              <h2 className="sec-title" style={{ marginBottom: 0 }}>Pick your format.</h2>
+            </div>
+            <Link className="btn btn-sm" to="/shop">see all 10 →</Link>
+          </div>
+          <p className="lead reveal">
+            Same 5g dose, three ways to take it. Start where your routine already is.
+          </p>
+          <div className="sku-grid" style={{ marginTop: 30 }}>
+            <Sku id="crunch-berry-200" tape="pink" badge="bestseller" title="crunch berry — 200g"
+              desc="Toasted oat-psyllium clusters with real berry pieces. Eat them dry, or over dahi."
+              specs={['200g', '6 serves', '₹41.5/serve']} mrp={299} price={249} per="the daily bag" />
+            <Sku id="og-jar-200" tape="gold" title="og jar — 200g"
+              desc="Micro-cut psyllium + prebiotic acacia. Stirs clean into water, juice, or your morning coffee."
+              specs={['200g', '40 serves', '₹10/serve']} mrp={449} price={399} per="the daily driver" />
+            <Sku id="cup-berry" tape="lav" title="berry dahi cup"
+              desc="Thick unsweetened dahi, real berry pulp, twist-top crunch topper. Nothing to prepare."
+              specs={['1 serve', 'chilled', 'ready to eat']} mrp={119} price={99} per="the fresh one" />
+          </div>
+        </div>
+      </section>
 
       <section className="band">
         <div className="wrap">
@@ -150,25 +175,25 @@ export default function Home() {
       <section>
         <div className="wrap">
           <span className="kicker reveal">the lineup</span>
-          <h2 className="sec-title reveal">One hero. Two sidekicks.</h2>
+          <h2 className="sec-title reveal">Three formats. One job.</h2>
           <div className="lines">
             <Link className="line-card lc-crunch reveal" to="/shop">
               <span className="tape" aria-hidden="true"></span>
-              <span className="lc-tag"><Icon name="star" size="1em" /> the hero</span>
+              <span className="lc-tag"><Icon name="star" size="1em" /> snack it</span>
               <h3>fibbi crunch</h3>
               <p>Oat-psyllium clusters that snack like granola and work like medicine (legally: it's a food).</p>
               <span className="lc-price">from ₹99 →</span>
             </Link>
             <Link className="line-card lc-og reveal" data-delay="1" to="/shop">
               <span className="tape gold" aria-hidden="true"></span>
-              <span className="lc-tag">the daily driver</span>
+              <span className="lc-tag">stir it</span>
               <h3>fibbi og</h3>
               <p>Our proprietary husk blend — micro-cut psyllium + prebiotic acacia. Stirs clean into anything.</p>
               <span className="lc-price">from ₹399 →</span>
             </Link>
             <Link className="line-card lc-cups reveal" data-delay="2" to="/shop">
               <span className="tape pink" aria-hidden="true"></span>
-              <span className="lc-tag">the fresh one</span>
+              <span className="lc-tag">spoon it</span>
               <h3>fibbi cups</h3>
               <p>Twist-top dahi cups with a crunch topper. The ready-to-eat ritual, on quick commerce.</p>
               <span className="lc-price">from ₹99 →</span>
@@ -178,6 +203,29 @@ export default function Home() {
       </section>
 
       <Testimonials />
+
+      <section>
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <div>
+              <span className="kicker">the journal</span>
+              <h2 className="sec-title" style={{ marginBottom: 0 }}>Fiber, explained.</h2>
+            </div>
+            <Link className="btn btn-sm" to="/journal">read all →</Link>
+          </div>
+          <div className="jr-grid">
+            {POSTS.map((p, i) => (
+              <Link key={p.slug} className="jr-card reveal" data-delay={i} to={`/journal/${p.slug}`}>
+                <span className="jr-tag">{p.tag}</span>
+                <h3>{p.title}</h3>
+                <p>{p.dek}</p>
+                <span className="jr-meta">{p.date} · {p.read} read →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Waitlist />
     </div>
   );

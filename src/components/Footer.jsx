@@ -14,6 +14,7 @@ export default function Footer() {
         <div>
           <h5>site</h5>
           <Link to="/shop">shop</Link>
+          <Link to="/journal">journal</Link>
           <Link to="/science">the science</Link>
           <Link to="/story">our story</Link>
           <Link to="/play">play</Link>

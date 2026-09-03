@@ -5,13 +5,12 @@ import { trackEvent } from './lib/supabase';
 
 import Announce from './components/Announce';
 import Topbar from './components/Topbar';
-import MobileNav from './components/MobileNav';
-import MobileCta from './components/MobileCta';
 import CartDrawer from './components/CartDrawer';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Shop from './pages/Shop';
+import Journal from './pages/Journal';
 import Science from './pages/Science';
 import Story from './pages/Story';
 import Play from './pages/Play';
@@ -33,14 +32,14 @@ export default function App() {
       <Announce />
       <div className="nav-shell">
         <Topbar />
-        <MobileNav />
       </div>
-      <MobileCta />
       <CartDrawer />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/journal/:slug" element={<Journal />} />
           <Route path="/science" element={<Science />} />
           <Route path="/story" element={<Story />} />
           <Route path="/play" element={<Play />} />

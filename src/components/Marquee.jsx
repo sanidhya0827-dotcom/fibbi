@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useMotionValue, useAnimationFrame } from 'motion/react';
 import Icon from './Icon';
 
-const items = ['5g real fiber', '0g added sugar', 'stays crunchy in dahi', 'batch 001 · 500 pouches', 'made in pune'];
+const items = ['5g real fiber', '0g added sugar', 'stays crunchy in dahi', 'zero slime', 'made in pune'];
 
 // keep x within [-w, 0] so the doubled track loops seamlessly
 const wrap = (w, v) => (w === 0 ? 0 : ((v % w) + w) % w) - w;

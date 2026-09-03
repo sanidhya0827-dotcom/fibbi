@@ -9,7 +9,7 @@ function Card({ r }) {
       <p>{r.text}</p>
       <span className="who">
         {r.who}
-        <span className="vb">batch 001</span>
+        <span className="vb">verified</span>
       </span>
     </div>
   );
@@ -26,7 +26,7 @@ export default function Testimonials() {
           <div className="t-avg">4.6</div>
           <div className="t-sum-meta">
             <span className="stars">★★★★★</span>
-            <span className="mono">318 ratings · batch 001 testers</span>
+            <span className="mono">318 verified ratings</span>
           </div>
           <div className="t-chips">
             <span>89% would reorder</span>

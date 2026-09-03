@@ -4,7 +4,7 @@ import AddButton from '../components/AddButton';
 import Icon from '../components/Icon';
 import { CATALOG } from '../data/catalog';
 
-function Sku({ tape, badge, badgeStyle, title, titleNote, desc, specs, mrp, price, per, id }) {
+export function Sku({ tape, badge, badgeStyle, title, titleNote, desc, specs, mrp, price, per, id }) {
   return (
     <div className="sku">
       <span className={`tape ${tape || ''}`} aria-hidden="true"></span>

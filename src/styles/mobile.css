@@ -16,13 +16,7 @@
 
   /* ---------- hero: product shot first, like a storefront card ---------- */
   .hero{padding:20px 18px 34px;gap:22px}
-  .hero .photo-stack{order:-1;height:320px;width:min(320px,92vw)}
-  .hero .ph-main{width:224px}
-  .hero .ph-main .ph-box{height:244px}
-  .hero .ph-a{width:130px;right:0;bottom:32px}
-  .hero .ph-a .ph-box{height:114px}
-  .hero .ph-b{width:138px;left:2px;bottom:-6px}
-  .hero .ph-b .ph-box{height:108px}
+  .hero .photo-stack{order:-1;width:min(340px,94vw)}
   .hero h1{font-size:clamp(31px,9.2vw,42px);margin-bottom:12px}
   .hero .lead{margin-bottom:10px}
   .stock-line{margin-bottom:18px}
@@ -42,6 +36,7 @@
   .proof-grid,
   .sku-grid,
   .quotes,
+  .jr-grid,
   .sci-grid > div:first-child{
     display:grid;grid-template-columns:none;
     grid-auto-flow:column;grid-auto-columns:min(80%,300px);
@@ -54,15 +49,17 @@
   .proof-grid::-webkit-scrollbar,
   .sku-grid::-webkit-scrollbar,
   .quotes::-webkit-scrollbar,
+  .jr-grid::-webkit-scrollbar,
   .sci-grid > div:first-child::-webkit-scrollbar{display:none}
 
   .lines > *,
   .proof-grid > *,
   .sku-grid > *,
   .quotes > *,
+  .jr-grid > *,
   .sci-grid > div:first-child > *{scroll-snap-align:start;--rr:0deg}
 
-  .line-card,.sku,.quote,.policy-card,.sci-card{transform:none;box-shadow:3px 3px 0 var(--ink)}
+  .line-card,.sku,.quote,.policy-card,.sci-card,.jr-card{transform:none;box-shadow:3px 3px 0 var(--ink)}
   .line-card{padding:22px 20px}
   .line-card h3{font-size:21px}
   .line-card p{font-size:14px;margin-bottom:12px}
@@ -92,14 +89,9 @@
   .s-buy{flex-wrap:nowrap;align-items:center}
   .og-note{margin-top:18px;padding:16px 18px;font-size:13.5px}
 
-  /* ---------- trust strip: one swipe row instead of a 2×2 block ---------- */
-  .trust-strip{
-    display:flex;overflow-x:auto;scrollbar-width:none;
-    scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
-  }
-  .trust-strip::-webkit-scrollbar{display:none}
-  .ts{flex:0 0 auto;scroll-snap-align:start;padding:13px 18px;white-space:nowrap;font-size:12.5px}
-  .ts + .ts{border-left:1.5px solid var(--ink-12);border-top:none}
+  /* ---------- trust strip: 2×2 block, no sideways scroll ---------- */
+  .trust-strip{display:grid;grid-template-columns:repeat(2,1fr)}
+  .ts{flex-direction:column;gap:6px;padding:16px 10px;font-size:12px;white-space:normal;text-align:center}
 
   /* ---------- quiz + waitlist ---------- */
   .quiz-card{margin-top:24px;transform:none}
