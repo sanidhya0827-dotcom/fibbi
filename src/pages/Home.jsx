@@ -4,7 +4,6 @@ import { useReveals } from '../lib/useReveals';
 import { saveLead, trackEvent } from '../lib/supabase';
 import Icon from '../components/Icon';
 import AddButton from '../components/AddButton';
-import PhotoStack from '../components/PhotoStack';
 import CursorTrail from '../components/CursorTrail';
 import Marquee from '../components/Marquee';
 import TrustStrip from '../components/TrustStrip';
@@ -117,7 +116,9 @@ export default function Home() {
             <div className="hm"><div className="n">6</div><div className="l">ingredients, total</div></div>
           </div>
         </div>
-        <PhotoStack />
+        <Link className="hero-banner" to="/shop" aria-label="Shop the range">
+          <video src="/fibbi-banner.mp4" autoPlay muted loop playsInline preload="metadata" />
+        </Link>
       </div>
 
       <Marquee />

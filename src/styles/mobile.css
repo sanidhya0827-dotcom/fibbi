@@ -16,7 +16,7 @@
 
   /* ---------- hero: product shot first, like a storefront card ---------- */
   .hero{padding:20px 18px 34px;gap:22px}
-  .hero .photo-stack{order:-1;width:min(340px,94vw)}
+  .hero .hero-banner{order:-1;box-shadow:4px 4px 0 var(--ink)}
   .hero h1{font-size:clamp(31px,9.2vw,42px);margin-bottom:12px}
   .hero .lead{margin-bottom:10px}
   .stock-line{margin-bottom:18px}
