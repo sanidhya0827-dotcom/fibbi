@@ -62,7 +62,7 @@ export default function Topbar() {
 
       <div className={`m-menu${open ? ' open' : ''}`} aria-hidden={!open}>
         <nav aria-label="Mobile">
-          {links.map(([to, label], i) => (
+          {links.map(([to, label]) => (
             <NavLink
               key={to}
               to={to}
@@ -70,7 +70,6 @@ export default function Topbar() {
               className={({ isActive }) => (isActive ? 'active' : '')}
               tabIndex={open ? 0 : -1}
             >
-              <span className="idx">0{i + 1}</span>
               {label}
             </NavLink>
           ))}

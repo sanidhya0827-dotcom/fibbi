@@ -5,6 +5,9 @@
   <url><loc>https://fibbi.in/science</loc><priority>0.8</priority></url>
   <url><loc>https://fibbi.in/story</loc><priority>0.7</priority></url>
   <url><loc>https://fibbi.in/journal</loc><priority>0.6</priority></url>
+  <url><loc>https://fibbi.in/journal/why-30g-fiber</loc><priority>0.6</priority></url>
+  <url><loc>https://fibbi.in/journal/psyllium-not-a-punishment</loc><priority>0.6</priority></url>
+  <url><loc>https://fibbi.in/journal/fiber-and-the-4pm-crash</loc><priority>0.6</priority></url>
   <url><loc>https://fibbi.in/play</loc><priority>0.4</priority></url>
   <url><loc>https://fibbi.in/policies</loc><priority>0.3</priority></url>
 </urlset>

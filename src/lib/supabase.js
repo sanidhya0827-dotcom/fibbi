@@ -1,10 +1,8 @@
-import { createClient } from '@supabase/supabase-js';
-
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-/** Null when env vars are missing — the app then runs in offline/demo mode. */
-export const supabase = url && key ? createClient(url, key) : null;
+/** False when env vars are missing — the app then runs in offline/demo mode. */
+const enabled = Boolean(url && key);
 
 const VID_COOKIE = 'fibbi_vid';        // first-party visitor profile, 1 year
 const SID_KEY = 'fibbi_sid';           // per-tab session
@@ -100,9 +98,9 @@ function device() {
 
 /* ------------------------------------------------------------------- writes */
 
-/** Insert that survives page unload (fetch keepalive beats supabase-js here). */
+/** Insert that survives page unload (fetch keepalive is why this talks to PostgREST directly). */
 function beacon(table, row) {
-  fetch(`${url}/rest/v1/${table}`, {
+  return fetch(`${url}/rest/v1/${table}`, {
     method: 'POST',
     keepalive: true,
     headers: {
@@ -130,31 +128,29 @@ export function logVisit() {
     utm: { ...v.utm, ...firstTouch() },
     device: device(),
   };
-  if (!supabase) {
+  if (!enabled) {
     if (import.meta.env.DEV) console.log('[visit]', row);
     return;
   }
-  supabase.from('visits').insert(row).then(({ error }) => error && console.warn('visit failed:', error.message));
+  beacon('visits', row);
 }
 
 /** Fire-and-forget analytics event. Never throws, never blocks UI. */
 export function trackEvent(event, payload = {}) {
   try {
     if (event === 'page_view') resetPageMetrics();
-    if (!supabase) {
+    const row = {
+      session_id: sessionId(),
+      visitor_id: visitor().id,
+      event,
+      path: window.location.pathname,
+      payload,
+    };
+    if (!enabled) {
       if (import.meta.env.DEV) console.log('[track]', event, payload);
       return;
     }
-    supabase
-      .from('events')
-      .insert({
-        session_id: sessionId(),
-        visitor_id: visitor().id,
-        event,
-        path: window.location.pathname,
-        payload,
-      })
-      .then(({ error }) => error && console.warn('track failed:', error.message));
+    beacon('events', row);
   } catch (e) {
     console.warn('track failed:', e);
   }
@@ -173,12 +169,22 @@ export async function saveLead(email, source, meta = {}) {
       utm: v.utm,
       device: device(),
     };
-    if (!supabase) {
+    if (!enabled) {
       if (import.meta.env.DEV) console.log('[lead]', email, source, full);
       return { ok: true };
     }
-    const { error } = await supabase.from('leads').insert({ email, source, meta: full });
-    if (error && error.code !== '23505') throw error;
+    const res = await fetch(`${url}/rest/v1/leads`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify({ email, source, meta: full }),
+    });
+    // 409 = same email+source already on the list, which is a success for the user
+    if (!res.ok && res.status !== 409) throw new Error(`lead insert ${res.status}`);
     return { ok: true };
   } catch (e) {
     console.warn('lead failed:', e);
@@ -215,7 +221,7 @@ function flushExit(reason) {
   if (exited || dwell < 800) return;
   exited = true;
   const payload = { reason, dwell_ms: dwell, max_scroll: maxScroll, clicks };
-  if (!supabase) {
+  if (!enabled) {
     if (import.meta.env.DEV) console.log('[track] page_exit', payload);
     return;
   }

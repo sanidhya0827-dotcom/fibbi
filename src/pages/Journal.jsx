@@ -111,7 +111,7 @@ export default function Journal() {
       <section>
         <div className="wrap">
           <span className="kicker lime">the journal <Icon name="sparkle" size="1em" /></span>
-          <h2 className="sec-title">Fiber, explained without the lecture.</h2>
+          <h1 className="sec-title">Fiber, explained without the lecture.</h1>
           <p className="lead">
             Notes on gut health, ingredients, and the science we build on — written for people who want the reasoning, not the marketing.
           </p>

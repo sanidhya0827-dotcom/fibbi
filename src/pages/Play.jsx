@@ -7,7 +7,7 @@ export default function Play() {
       <section>
         <div className="wrap">
           <span className="kicker lime">play <Icon name="gamepad" size="1em" /></span>
-          <h2 className="sec-title">The fibermaxxing game.</h2>
+          <h1 className="sec-title">The fibermaxxing game.</h1>
           <p className="lead">Catch 30 seconds of clusters, dodge the sugar cubes, screenshot your tier. 25g+ makes you a certified fibermaxxer.</p>
           <Game />
         </div>

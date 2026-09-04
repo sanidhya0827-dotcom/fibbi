@@ -35,6 +35,7 @@
   ::selection{background:var(--lime);color:var(--ink)}
   h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.12;text-wrap:balance}
   h1{font-size:var(--fs-h1);letter-spacing:-.035em;line-height:1.04}
+  h1.sec-title{letter-spacing:-.03em;line-height:1.06}
   h2{font-size:var(--fs-h2);letter-spacing:-.03em;line-height:1.06}
   h3{font-size:var(--fs-xl)}
   h4{font-size:var(--fs-lg)}
@@ -755,4 +756,31 @@
     *,*::before,*::after{animation:none !important;transition-duration:.01ms !important}
     .reveal{opacity:1;transform:none}
     html{scroll-behavior:auto}
+  }
+
+  /* ---------- responsive hardening ---------- */
+
+  html{-webkit-text-size-adjust:100%}
+  img,svg,video,canvas{max-width:100%}
+  img{height:auto}
+
+  .route-loading{display:grid;place-items:center;min-height:60vh}
+
+  /* tablet band: three-up card grids get cramped before the mobile deck kicks in */
+  @media(min-width:861px) and (max-width:1024px){
+    .lines,.proof-grid,.quotes,.jr-grid{grid-template-columns:repeat(2,1fr)}
+  }
+
+  /* touch devices: hover states latch on after a tap, and rotated cards can push the page sideways */
+  @media(hover:none){
+    .hero-banner:hover{transform:none;box-shadow:6px 6px 0 var(--ink)}
+    a,button{-webkit-tap-highlight-color:transparent}
+  }
+
+  /* landscape phones: the full-screen menu needs to scroll, not clip */
+  @media(max-height:480px) and (orientation:landscape){
+    .m-menu{padding-top:calc(64px + env(safe-area-inset-top))}
+    .m-menu nav a{font-size:22px;padding:11px 0}
+    .m-menu-foot{padding-top:20px}
+    .hero{padding-top:28px}
   }

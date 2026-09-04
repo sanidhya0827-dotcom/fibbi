@@ -10,7 +10,7 @@ export default function Science() {
       <section>
         <div className="wrap">
           <span className="kicker lime">the science <Icon name="atom" size="1em" /></span>
-          <h2 className="sec-title">Clinically boring.<br />Effectively magic.</h2>
+          <h1 className="sec-title">Clinically boring.<br />Effectively magic.</h1>
           <p className="lead">Psyllium husk is a soluble, gel-forming fiber studied for decades. We didn't invent the ingredient — we engineered the delivery.</p>
           <div className="sci-grid">
             <div>

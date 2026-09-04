@@ -135,7 +135,7 @@ export default function Home() {
           <div className="lines">
             <Link className="line-card lc-crunch reveal" to="/shop#crunch">
               <span className="tape" aria-hidden="true"></span>
-              <img className="lc-img" src="/the%20crunch.png" alt="fibbi crunch" loading="lazy" />
+              <img className="lc-img" src="/the-crunch.webp" alt="fibbi crunch" loading="lazy" decoding="async" />
               <span className="lc-tag"><Icon name="star" size="1em" /> snack it</span>
               <h3>fibbi crunch</h3>
               <p>Oat-psyllium clusters that snack like granola. Eat them dry, or over dahi.</p>
@@ -143,7 +143,7 @@ export default function Home() {
             </Link>
             <Link className="line-card lc-og reveal" data-delay="1" to="/shop#og">
               <span className="tape gold" aria-hidden="true"></span>
-              <img className="lc-img" src="/the%20og.png" alt="fibbi og" loading="lazy" />
+              <img className="lc-img" src="/the-og.webp" alt="fibbi og" loading="lazy" decoding="async" />
               <span className="lc-tag">stir it</span>
               <h3>fibbi og</h3>
               <p>Our husk blend — micro-cut psyllium + prebiotic acacia. Stirs clean into anything.</p>
@@ -151,7 +151,7 @@ export default function Home() {
             </Link>
             <Link className="line-card lc-cups reveal" data-delay="2" to="/shop#cups">
               <span className="tape pink" aria-hidden="true"></span>
-              <img className="lc-img" src="/the%20cup.png" alt="fibbi cups" loading="lazy" />
+              <img className="lc-img" src="/the-cup.webp" alt="fibbi cups" loading="lazy" decoding="async" />
               <span className="lc-tag">spoon it</span>
               <h3>fibbi cups</h3>
               <p>Twist-top dahi cups with a crunch topper. Nothing to prepare.</p>

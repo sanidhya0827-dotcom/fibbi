@@ -11,7 +11,7 @@ export default function Story() {
       <section>
         <div className="wrap">
           <span className="kicker lime">our story <Icon name="book" size="1em" /></span>
-          <h2 className="sec-title">The most effective fiber on earth had a branding problem.</h2>
+          <h1 className="sec-title">The most effective fiber on earth had a branding problem.</h1>
           <div className="story-block">
             <p><b>Since the 1970s,</b> Indian households have started mornings with isabgol stirred into warm water. It worked. It always worked. It also became shorthand for "uncle behaviour" — the single most effective fiber on the planet, filed under embarrassing.</p>
             <p><b>Meanwhile,</b> a generation raised on gut-health reels pays premium prices for imported prebiotic sodas carrying a fraction of the fiber, because those come in cans that look good on a shelf.</p>

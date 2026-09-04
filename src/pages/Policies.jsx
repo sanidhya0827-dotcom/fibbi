@@ -10,7 +10,7 @@ export default function Policies() {
       <section>
         <div className="wrap">
           <span className="kicker lime">the boring-but-important page <Icon name="clipboard" size="1em" /></span>
-          <h2 className="sec-title">Shipping, returns &amp; everything else.</h2>
+          <h1 className="sec-title">Shipping, returns &amp; everything else.</h1>
           <p className="lead">Short versions below. If anything's unclear, WhatsApp us — a human replies, usually within the hour (10am–7pm IST).</p>
           <div className="policy-grid">
             <div className="policy-card reveal">

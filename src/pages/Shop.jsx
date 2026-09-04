@@ -10,7 +10,7 @@ export function Sku({ tape, badge, badgeStyle, title, titleNote, desc, specs, mr
     <div className="sku">
       <span className={`tape ${tape || ''}`} aria-hidden="true"></span>
       {badge && <span className="badge" style={badgeStyle}>{badge}</span>}
-      <div className="sku-visual"><img src={CATALOG[id].img} alt={title} loading="lazy" /></div>
+      <div className="sku-visual"><img src={CATALOG[id].img} alt={title} loading="lazy" decoding="async" /></div>
       <div className="sku-body">
         <h4>
           {title}
@@ -44,7 +44,7 @@ export default function Shop() {
       <section>
         <div className="wrap">
           <span className="kicker lime">shop <Icon name="cart" size="1em" /></span>
-          <h2 className="sec-title">The drop.</h2>
+          <h1 className="sec-title">The drop.</h1>
           <p className="lead">Launch pricing for India. Every serve carries 5g of psyllium and a label you can read out loud.</p>
           <p className="dispatch-line" style={{ marginTop: 10 }}>
             <Icon name="check" size="1em" /> dispatch in 24–48h · <Icon name="truck" size="1em" /> free shipping above ₹499 · <Icon name="money" size="1em" /> COD available (+₹49)
