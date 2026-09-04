@@ -20,7 +20,12 @@ function PageViews() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    trackEvent('page_view', { path: location.pathname });
+    trackEvent('page_view', {
+      path: location.pathname,
+      search: location.search || null,
+      title: document.title,
+      referrer: document.referrer || null,
+    });
   }, [location.pathname]);
   return null;
 }
