@@ -198,8 +198,14 @@
     background:var(--lime);z-index:-1;transform:skewX(-8deg);
   }
   .hero .lead{margin-bottom:14px}
-  .stock-line{font-family:'Space Mono';font-size:12px;letter-spacing:.08em;color:var(--berry);font-weight:700;margin-bottom:26px}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .stock-line{
+    position:absolute;top:-9px;left:24px;z-index:6;
+    font-family:'Space Mono';font-size:9.5px;letter-spacing:.06em;font-weight:700;line-height:1;
+    color:var(--white);background:var(--berry);border:1.5px solid var(--ink);
+    padding:3px 8px;border-radius:999px;transform:rotate(-2deg);white-space:nowrap;
+  }
+  .cta-row{position:relative;display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:30px}
+  .hero .pin-check{margin-top:22px;max-width:460px}
   .hero-meta{display:flex;gap:22px;margin-top:38px;flex-wrap:wrap}
   .hm{border-left:2px solid var(--lime-deep);padding-left:14px;transform:rotate(-.5deg)}
   .hm .n{font-family:'Bricolage Grotesque';font-weight:800;font-size:26px;line-height:1}
@@ -336,6 +342,7 @@
   .line-card:nth-child(1){--rr:-1deg}.line-card:nth-child(2){--rr:.8deg}.line-card:nth-child(3){--rr:-.6deg}
   .line-card:hover{transform:translateY(-6px) rotate(0deg);box-shadow:0 14px 26px rgba(30,21,51,.12)}
   .line-card .tape{top:-11px;left:50%;transform:translateX(-50%) rotate(-3deg);width:70px;height:20px}
+  .line-card .lc-img{display:block;width:100%;height:180px;object-fit:cover;border:1.5px solid var(--ink);border-radius:12px;background:var(--cream);margin-bottom:18px}
   .line-card .lc-tag{font-family:'Space Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:inline-block;padding:5px 11px;border-radius:999px;margin-bottom:16px}
   .line-card h3{font-size:var(--fs-xl);margin-bottom:8px}
   .line-card p{font-size:var(--fs-base);color:var(--ink-60);font-weight:500;margin-bottom:16px}
@@ -358,7 +365,7 @@
   .quote .who{font-family:'Space Mono';font-size:11.5px;color:var(--ink-60)}
 
   /* ================= SHOP ================= */
-  .shop-line{margin-top:48px}
+  .shop-line{margin-top:48px;scroll-margin-top:96px}
   .shop-line:first-of-type{margin-top:32px}
   .line-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;border-bottom:1.5px solid var(--ink);padding-bottom:14px;margin-bottom:26px}
   .line-head h3{font-size:clamp(22px,3vw,30px)}
@@ -565,15 +572,10 @@
   @media(max-width:860px){.ts:nth-child(3){border-left:none;border-top:1.5px solid var(--ink-12)}.ts:nth-child(4){border-top:1.5px solid var(--ink-12)}}
   .ts .ts-e{font-size:19px}
   .ts small{display:block;font-family:'Space Mono';font-size:10px;font-weight:400;letter-spacing:.06em;color:var(--ink-60);text-transform:uppercase}
-  .rating-line{display:flex;align-items:center;gap:10px;margin:4px 0 10px;font-weight:700;font-size:14px}
-  .rating-line .stars{color:var(--gold);letter-spacing:2px}
-  .rating-line .rl-n{font-family:'Space Mono';font-size:12px;color:var(--ink-60)}
   .pin-check{
     display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:22px;
     border:1.5px dashed var(--ink);border-radius:14px;padding:12px 14px;background:var(--white);max-width:420px;
   }
-  .pin-band{display:flex;justify-content:center;padding:clamp(30px,5vw,48px) clamp(18px,4vw,60px)}
-  .pin-band .pin-check{margin-top:0;width:100%;max-width:460px}
   .pin-check input{
     font-family:'Space Mono';font-size:14px;padding:9px 14px;border-radius:999px;
     border:1.5px solid var(--ink);width:130px;background:var(--cream);letter-spacing:.1em;

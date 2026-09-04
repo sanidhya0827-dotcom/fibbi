@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useReveals } from '../lib/useReveals';
 import AddButton from '../components/AddButton';
 import Icon from '../components/Icon';
@@ -32,6 +33,11 @@ export function Sku({ tape, badge, badgeStyle, title, titleNote, desc, specs, mr
 export default function Shop() {
   const ref = useRef(null);
   useReveals(ref);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+  }, [hash]);
 
   return (
     <div className="page active" ref={ref}>
@@ -44,7 +50,7 @@ export default function Shop() {
             <Icon name="check" size="1em" /> dispatch in 24–48h · <Icon name="truck" size="1em" /> free shipping above ₹499 · <Icon name="money" size="1em" /> COD available (+₹49)
           </p>
 
-          <div className="shop-line">
+          <div className="shop-line" id="crunch">
             <div className="line-head">
               <h3><Icon name="star" size="1em" /> fibbi crunch — the hero</h3>
               <span className="lh-note">shelf stable · ships pan-india · 5g fiber per 35g serve</span>
@@ -69,7 +75,7 @@ export default function Shop() {
             </div>
           </div>
 
-          <div className="shop-line">
+          <div className="shop-line" id="og">
             <div className="line-head">
               <h3>fibbi og — the signature husk</h3>
               <span className="lh-note">proprietary blend · 95% micro-cut psyllium + prebiotic acacia</span>
@@ -89,7 +95,7 @@ export default function Shop() {
             </div>
           </div>
 
-          <div className="shop-line">
+          <div className="shop-line" id="cups">
             <div className="line-head">
               <h3>fibbi cups — the fresh line</h3>
               <span className="lh-note">refrigerated · quick commerce · 155g (120g base + 35g topper)</span>

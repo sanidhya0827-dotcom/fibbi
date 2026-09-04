@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import { useReveals } from '../lib/useReveals';
 import { saveLead, trackEvent } from '../lib/supabase';
 import Icon from '../components/Icon';
-import AddButton from '../components/AddButton';
 import CursorTrail from '../components/CursorTrail';
 import Marquee from '../components/Marquee';
 import TrustStrip from '../components/TrustStrip';
 import Quiz from '../components/Quiz';
 import Testimonials from '../components/Testimonials';
-import { Sku } from './Shop';
 import { POSTS } from './Journal';
 
 const METRO_PREFIX = ['11', '12', '20', '40', '41', '56', '60', '50', '70', '38', '30'];
@@ -100,16 +98,14 @@ export default function Home() {
             Fiber that <span className="u">snacks back.</span>
           </h1>
           <p className="lead">
-            Real-dose psyllium in three formats — baked crunch clusters, a stir-in husk blend, and ready-to-eat dahi cups. 5g of
-            real fiber a serve. Zero added sugar. Zero slime. Zero lectures.
+            The fiber your grandpa swore by, minus the 6am glass of slime. We baked it into something you'd actually reach for —
+            5g a serve, no lecture.
           </p>
-          <div className="rating-line">
-            <span className="stars">★★★★★</span> 4.6 <span className="rl-n">· 318 tester ratings</span>
-          </div>
-          <p className="stock-line"><Icon name="bolt" size="1em" /> batch 001 is limited to 500 pouches — moving fast</p>          <div className="cta-row">
+          <div className="cta-row">
+            <span className="stock-line"><Icon name="bolt" size="1em" /> batch 001 · 500 pouches</span>
             <Link className="btn btn-primary" to="/shop">shop the range · from ₹99</Link>
-            <Link className="btn" to="/science">read the science</Link>
           </div>
+          <PinCheck />
           <div className="hero-meta">
             <div className="hm"><div className="n">5g</div><div className="l">fiber per serve</div></div>
             <div className="hm"><div className="n">0g</div><div className="l">added sugar</div></div>
@@ -123,9 +119,6 @@ export default function Home() {
 
       <Marquee />
       <TrustStrip />
-      <div className="pin-band">
-        <PinCheck />
-      </div>
 
       <section className="home-shop">
         <div className="wrap">
@@ -139,16 +132,31 @@ export default function Home() {
           <p className="lead reveal">
             Same 5g dose, three ways to take it. Start where your routine already is.
           </p>
-          <div className="sku-grid" style={{ marginTop: 30 }}>
-            <Sku id="crunch-berry-200" tape="pink" badge="bestseller" title="crunch berry — 200g"
-              desc="Toasted oat-psyllium clusters with real berry pieces. Eat them dry, or over dahi."
-              specs={['200g', '6 serves', '₹41.5/serve']} mrp={299} price={249} per="the daily bag" />
-            <Sku id="og-jar-200" tape="gold" title="og jar — 200g"
-              desc="Micro-cut psyllium + prebiotic acacia. Stirs clean into water, juice, or your morning coffee."
-              specs={['200g', '40 serves', '₹10/serve']} mrp={449} price={399} per="the daily driver" />
-            <Sku id="cup-berry" tape="lav" title="berry dahi cup"
-              desc="Thick unsweetened dahi, real berry pulp, twist-top crunch topper. Nothing to prepare."
-              specs={['1 serve', 'chilled', 'ready to eat']} mrp={119} price={99} per="the fresh one" />
+          <div className="lines">
+            <Link className="line-card lc-crunch reveal" to="/shop#crunch">
+              <span className="tape" aria-hidden="true"></span>
+              <img className="lc-img" src="/the%20crunch.png" alt="fibbi crunch" loading="lazy" />
+              <span className="lc-tag"><Icon name="star" size="1em" /> snack it</span>
+              <h3>fibbi crunch</h3>
+              <p>Oat-psyllium clusters that snack like granola. Eat them dry, or over dahi.</p>
+              <span className="lc-price">from ₹249 →</span>
+            </Link>
+            <Link className="line-card lc-og reveal" data-delay="1" to="/shop#og">
+              <span className="tape gold" aria-hidden="true"></span>
+              <img className="lc-img" src="/the%20og.png" alt="fibbi og" loading="lazy" />
+              <span className="lc-tag">stir it</span>
+              <h3>fibbi og</h3>
+              <p>Our husk blend — micro-cut psyllium + prebiotic acacia. Stirs clean into anything.</p>
+              <span className="lc-price">from ₹399 →</span>
+            </Link>
+            <Link className="line-card lc-cups reveal" data-delay="2" to="/shop#cups">
+              <span className="tape pink" aria-hidden="true"></span>
+              <img className="lc-img" src="/the%20cup.png" alt="fibbi cups" loading="lazy" />
+              <span className="lc-tag">spoon it</span>
+              <h3>fibbi cups</h3>
+              <p>Twist-top dahi cups with a crunch topper. Nothing to prepare.</p>
+              <span className="lc-price">from ₹99 →</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -170,36 +178,6 @@ export default function Home() {
             <div className="proof reveal" data-delay="2"><span className="p-emo"><Icon name="spoon" size={30} /></span><div className="p-h">The fix tasted like punishment</div><p>The most proven fiber on earth has been in Indian homes for a century — served as slimy water at 6am. So nobody your age touches it.</p></div>
           </div>
           <Quiz />
-        </div>
-      </section>
-
-      <section>
-        <div className="wrap">
-          <span className="kicker reveal">the lineup</span>
-          <h2 className="sec-title reveal">Three formats. One job.</h2>
-          <div className="lines">
-            <Link className="line-card lc-crunch reveal" to="/shop">
-              <span className="tape" aria-hidden="true"></span>
-              <span className="lc-tag"><Icon name="star" size="1em" /> snack it</span>
-              <h3>fibbi crunch</h3>
-              <p>Oat-psyllium clusters that snack like granola and work like medicine (legally: it's a food).</p>
-              <span className="lc-price">from ₹99 →</span>
-            </Link>
-            <Link className="line-card lc-og reveal" data-delay="1" to="/shop">
-              <span className="tape gold" aria-hidden="true"></span>
-              <span className="lc-tag">stir it</span>
-              <h3>fibbi og</h3>
-              <p>Our proprietary husk blend — micro-cut psyllium + prebiotic acacia. Stirs clean into anything.</p>
-              <span className="lc-price">from ₹399 →</span>
-            </Link>
-            <Link className="line-card lc-cups reveal" data-delay="2" to="/shop">
-              <span className="tape pink" aria-hidden="true"></span>
-              <span className="lc-tag">spoon it</span>
-              <h3>fibbi cups</h3>
-              <p>Twist-top dahi cups with a crunch topper. The ready-to-eat ritual, on quick commerce.</p>
-              <span className="lc-price">from ₹99 →</span>
-            </Link>
-          </div>
         </div>
       </section>
 

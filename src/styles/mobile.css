@@ -19,8 +19,8 @@
   .hero .hero-banner{order:-1;box-shadow:4px 4px 0 var(--ink)}
   .hero h1{font-size:clamp(31px,9.2vw,42px);margin-bottom:12px}
   .hero .lead{margin-bottom:10px}
-  .stock-line{margin-bottom:18px}
-  .cta-row{gap:10px}
+  .stock-line{font-size:9px;left:16px;top:-8px}
+  .cta-row{gap:10px;margin-top:26px}
   .cta-row .btn{flex:1 1 100%}
 
   .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:24px}
@@ -61,6 +61,7 @@
 
   .line-card,.sku,.quote,.policy-card,.sci-card,.jr-card{transform:none;box-shadow:3px 3px 0 var(--ink)}
   .line-card{padding:22px 20px}
+  .line-card .lc-img{height:150px;margin-bottom:14px}
   .line-card h3{font-size:21px}
   .line-card p{font-size:14px;margin-bottom:12px}
   .line-card .lc-tag{margin-bottom:12px}
