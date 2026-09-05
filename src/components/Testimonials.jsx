@@ -9,7 +9,7 @@ function Card({ r }) {
       <p>{r.text}</p>
       <span className="who">
         {r.who}
-        <span className="vb">verified</span>
+        <span className="vb">illustrative</span>
       </span>
     </div>
   );
@@ -20,20 +20,12 @@ export default function Testimonials() {
   return (
     <section style={{ paddingTop: 0 }}>
       <div className="wrap">
-        <span className="kicker lime reveal">what testers said <Icon name="speech" /></span>
-        <h2 className="sec-title reveal">Batch 001 has opinions.</h2>
-        <div className="t-summary reveal">
-          <div className="t-avg">4.6</div>
-          <div className="t-sum-meta">
-            <span className="stars">★★★★★</span>
-            <span className="mono">318 verified ratings</span>
-          </div>
-          <div className="t-chips">
-            <span>89% would reorder</span>
-            <span>"crunchy" × 121 mentions</span>
-            <span>"not slimy" × 74 mentions</span>
-          </div>
-        </div>
+        <span className="kicker lime reveal">tasting notes <Icon name="speech" /></span>
+        <h2 className="sec-title reveal">What we're hoping you'll say.</h2>
+        <p className="lead reveal">
+          fibbi hasn't shipped yet, so there's nothing here to rate. These are the reactions we're
+          building for — written by us, from our own kitchen-table tasting sessions.
+        </p>
       </div>
       <div className="t-carousel" aria-label="Tester reviews">
         <div className="t-track">

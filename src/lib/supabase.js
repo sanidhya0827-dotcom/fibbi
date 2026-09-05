@@ -1,3 +1,5 @@
+import { mirrorToPixel } from './pixel';
+
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
@@ -139,6 +141,9 @@ export function logVisit() {
 export function trackEvent(event, payload = {}) {
   try {
     if (event === 'page_view') resetPageMetrics();
+    // Meta pixel is independent of Supabase — mirror before the `enabled` bail-out
+    // so ad measurement still works if the Supabase env vars are missing.
+    mirrorToPixel(event, payload);
     const row = {
       session_id: sessionId(),
       visitor_id: visitor().id,

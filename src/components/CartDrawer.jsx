@@ -13,6 +13,8 @@ export default function CartDrawer() {
   const submitRestock = async () => {
     if (!email.includes('@')) return;
     setBusy(true);
+    // source stays 'restock' so schema.sql + the README funnel queries keep working;
+    // the user-facing copy calls it the launch list.
     const res = await saveLead(email, 'restock', {
       subtotal,
       items: items.map((i) => ({ sku: i.id, qty: i.qty })),
@@ -88,18 +90,18 @@ export default function CartDrawer() {
         {panel === 'checking' && (
           <div className="checking show">
             <div className="spinner" aria-hidden="true" />
-            <p>confirming stock with the warehouse…</p>
+            <p>checking batch 001 availability…</p>
           </div>
         )}
 
         {panel === 'oos' && (
           <div className="oos show">
             <span className="oos-emo"><Icon name="box" size={40} /></span>
-            <span className="oos-tag">out of stock</span>
-            <h4>the first batch is gone.</h4>
-            <p>500 pouches sold out faster than we could tape the boxes. drop your email — restock list gets first dibs + founder pricing.</p>
+            <span className="oos-tag">not shipping yet</span>
+            <h4>batch 001 is still in the kitchen.</h4>
+            <p>we're not taking orders until it's baked and tested. drop your email — the launch list ships first, at founder pricing.</p>
             <p className="mono" style={{ fontSize: 11, color: 'var(--ink-60)' }}>
-              restock ETA: 12–14 days · no payment was taken · your cart is saved
+              no payment was taken · your cart is saved · we'll email the moment it's ready
             </p>
             {!saved ? (
               <>
@@ -112,7 +114,7 @@ export default function CartDrawer() {
                   onKeyDown={(e) => e.key === 'Enter' && submitRestock()}
                 />
                 <button className="btn btn-primary" onClick={submitRestock} disabled={busy}>
-                  {busy ? 'saving…' : 'get restock priority'}
+                  {busy ? 'saving…' : 'join the launch list'}
                 </button>
               </>
             ) : (

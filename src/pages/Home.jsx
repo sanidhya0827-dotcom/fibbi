@@ -56,15 +56,18 @@ function Waitlist() {
     setBusy(true);
     const res = await saveLead(email, 'waitlist');
     setBusy(false);
-    if (res.ok) setDone(true);
+    if (res.ok) {
+      setDone(true);
+      trackEvent('lead_saved', { source: 'waitlist' });
+    }
   };
 
   return (
     <section className="waitlist">
       <div className="wrap">
-        <h2 className="sec-title reveal">Batch 002 won't wait either. <Icon name="box" /></h2>
+        <h2 className="sec-title reveal">Batch 001 is small. <Icon name="box" /></h2>
         <p className="lead reveal">
-          500 pouches per batch while we scale the bakery. The list gets first dibs and founder pricing — everyone else gets the sold-out page.
+          500 pouches, because that's all our bakery can do at once. The launch list gets first dibs and founder pricing when it's ready.
         </p>
         <div className="wl-form reveal" data-delay="1">
           <input
@@ -102,7 +105,7 @@ export default function Home() {
             5g a serve, no lecture.
           </p>
           <div className="cta-row">
-            <span className="stock-line"><Icon name="bolt" size="1em" /> batch 001 · 500 pouches</span>
+            <span className="stock-line"><Icon name="bolt" size="1em" /> batch 001 · launching soon</span>
             <Link className="btn btn-primary" to="/shop">shop the range · from ₹99</Link>
           </div>
           <PinCheck />
